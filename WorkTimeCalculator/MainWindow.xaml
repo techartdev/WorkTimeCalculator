@@ -7,28 +7,40 @@
         mc:Ignorable="d"
         Title="Калкулатор за трудов стаж" Height="350" Width="650" Icon="icon.ico">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <GroupBox x:Name="groupBox" Header="Добавяне на дати" Margin="10,0,10,10">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Дата на назначаване:"/>
-                <DatePicker x:Name="startDate"/>
-                <Label Content="Дата на напускане:"/>
-                <DatePicker x:Name="endDate"/>
-                <Button x:Name="addBtn" Margin="0, 10" Content="Добави" Click="addBtn_Click"/>
-            </StackPanel>
-        </GroupBox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox x:Name="groupBox" Header="Добавяне на дати" Margin="10,0,10,10">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Дата на назначаване:"/>
+                    <DatePicker x:Name="startDate"/>
+                    <Label Content="Дата на напускане:"/>
+                    <DatePicker x:Name="endDate"/>
+                    <Button x:Name="addBtn" Margin="0, 10" Content="Добави" Click="addBtn_Click"/>
+                </StackPanel>
+            </GroupBox>
 
-        <DataGrid x:Name="datesView" Grid.Column="1" Margin="10,10,10,56" ItemsSource="{Binding DatesRange}" AutoGenerateColumns="False" CanUserAddRows="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Време" Binding="{Binding Text}" Width="2*"/>
-                <DataGridTextColumn Header="Начало" Binding="{Binding StartDate}" Width="*"/>
-                <DataGridTextColumn Header="Край" Binding="{Binding EndDate}" Width="*"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <TextBlock x:Name="resultTb" Grid.Column="1" Margin="10,0,10,10" TextWrapping="Wrap" Text="Общо време: " Height="41" VerticalAlignment="Bottom"/>
+            <DataGrid x:Name="datesView" Grid.Column="1" Margin="10,10,10,56" ItemsSource="{Binding DatesRange}" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Време" Binding="{Binding Text}" Width="2*"/>
+                    <DataGridTextColumn Header="Начало" Binding="{Binding StartDate}" Width="*"/>
+                    <DataGridTextColumn Header="Край" Binding="{Binding EndDate}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock x:Name="resultTb" Grid.Column="1" Margin="10,0,10,10" TextWrapping="Wrap" Text="Общо време: " Height="41" VerticalAlignment="Bottom"/>
 
+        </Grid>
+        <Menu x:Name="menu">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Изход" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Относно" Click="About_Click"/>
+        </Menu>
     </Grid>
 </Window>

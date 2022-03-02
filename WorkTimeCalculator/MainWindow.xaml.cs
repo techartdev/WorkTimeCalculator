@@ -98,6 +98,17 @@ namespace WorkTimeCalculator
         {
             resultTb.Text = "Общо време: " + TimeSpanExtentions.PeriodBetween(DateTime.Now, DateTime.Now.AddDays(DatesRange.Sum(s => (s.EndDate - s.StartDate).TotalDays)), 3);
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
+        }
     }
 
     public static class TimeSpanExtentions
