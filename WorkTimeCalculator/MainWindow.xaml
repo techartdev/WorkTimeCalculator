@@ -1,0 +1,34 @@
+﻿<Window x:Class="WorkTimeCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkTimeCalculator"
+        mc:Ignorable="d"
+        Title="Калкулатор за трудов стаж" Height="350" Width="650" Icon="icon.ico">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox x:Name="groupBox" Header="Добавяне на дати" Margin="10,0,10,10">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Дата на назначаване:"/>
+                <DatePicker x:Name="startDate"/>
+                <Label Content="Дата на напускане:"/>
+                <DatePicker x:Name="endDate"/>
+                <Button x:Name="addBtn" Margin="0, 10" Content="Добави" Click="addBtn_Click"/>
+            </StackPanel>
+        </GroupBox>
+
+        <DataGrid x:Name="datesView" Grid.Column="1" Margin="10,10,10,56" ItemsSource="{Binding DatesRange}" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Време" Binding="{Binding Text}" Width="2*"/>
+                <DataGridTextColumn Header="Начало" Binding="{Binding StartDate}" Width="*"/>
+                <DataGridTextColumn Header="Край" Binding="{Binding EndDate}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock x:Name="resultTb" Grid.Column="1" Margin="10,0,10,10" TextWrapping="Wrap" Text="Общо време: " Height="41" VerticalAlignment="Bottom"/>
+
+    </Grid>
+</Window>
